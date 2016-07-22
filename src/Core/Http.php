@@ -225,6 +225,10 @@ class Http
 
         $options['handler'] = $this->getHandler();
 
+	if(env('PROXY')) {
+	    $options['proxy'] = env('PROXY');
+	}
+
         $response = $this->getClient()->request($method, $url, $options);
 
         Log::debug('API response:', [
